@@ -6,6 +6,10 @@ import re
 import os
 from threading import Thread
 from sentiment_analysis import process_data_and_train_model
+import platform
+
+if platform.system() != 'Windows':
+    import fcntl
 
 load_dotenv()
 
@@ -134,6 +138,9 @@ def generate_pkl():
 # if __name__ == '__main__':
 #     app.run(debug=True)
     
-
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run()
+
+
+# if __name__ == '__main__':
+#     app.run(host='0.0.0.0', port=5000, debug=True)

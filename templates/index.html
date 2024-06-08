@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter SA</title>
+    <!-- Import css from public in flask -->
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3938/3938028.png" type="image/gif" sizes="16x16">
+
+    <link href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet" />
+
+    <style>
+        /* Your CSS styles go here */
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #090b0e;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            margin: 2% 10%;
+        }
+        
+        h1 {
+            color: #5908e5;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 30px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .description {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-top: 30px;
+        }
+        
+        .share-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .share-button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        h4 {
+            width: 100%;
+            text-align: center;
+            font-weight: 400;
+        }
+        
+        .twitter {
+            background-color: #1da1f2;
+        }
+        
+        .facebook {
+            background-color: #1877f2;
+        }
+        
+        .linkedin {
+            background-color: #2867b2;
+        }
+        
+        .instagram {
+            background-color: #c32aa3;
+        }
+        
+        .share-button i {
+            margin-right: 5px;
+        }
+        
+        .share-button:hover {
+            opacity: 0.8;
+        }
+        
+        p {
+            text-align: center;
+            margin-top: 50px;
+            display: none;
+        }
+        
+        img {
+            display: block;
+            margin: 0 auto;
+            width: 60%;
+            height: 210px;
+            object-fit: cover;
+            object-position: center;
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0px 8px 24px 0px rgba(0, 0, 0, 0.42000000000000004);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Twitter Sentiment Analysis</h1>
+        <button id="tryNow" onclick="window.location.href='predict_tweets'">Try Now</button>
+        <div class="description">
+            Twitter Sentiment Analysis is the process of analyzing tweets on Twitter to determine the sentiment or opinion expressed within them. It involves using natural language processing, machine learning, and text analysis techniques to classify tweets as positive,
+            negative, or neutral. This analysis can provide valuable insights into public opinion, customer feedback, and trends in various industries. By understanding the sentiment of tweets, businesses, researchers, and individuals can make informed
+            decisions and take appropriate actions.
+        </div>
+
+        <img src="https://i1.wp.com/turbolab.in/wp-content/uploads/2021/09/sentiment.png" alt="Twitter SA" />
+
+
+        <div class="share-buttons">
+            <div class="share-button twitter" onclick="shareTwitter()">
+                <i class="fab fa-twitter"></i> Twitter
+            </div>
+            <div class="share-button facebook" onclick="shareFacebook()">
+                <i class="fab fa-facebook"></i> Facebook
+            </div>
+            <div class="share-button linkedin" onclick="shareLinkedin()">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </div>
+            <div class="share-button instagram" onclick="shareInstagram()">
+                <i class="fab fa-instagram"></i> Instagram
+            </div>
+        </div>
+    </div>
+
+
+    <p>Designed and Developed with ❤ by Vinay Prajapat</p>
+
+
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter Sentiment Analysis</title>
+    <!-- Import css from public in flask -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
+    <link href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet" />
+
+    <!-- Feviicon -->
+
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3938/3938028.png" type="image/gif" sizes="16x16">
+</head>
+
+<body class="predict">
+
+    <!-- <div class="circle circle-outer-1"></div>
+    <div class="circle circle-outer-2"></div> -->
+    <!-- <div class="circle circle-inner"></div> -->
+
+    <nav>
+        <div class="logo">
+            <img id="logo_img" src="https://cdn-icons-png.flaticon.com/512/3938/3938028.png" alt="">
+            <h1>Twitter SA</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/predict_tweets" class="active"><i class="fas fa-sad-cry"></i> Predict</a></li>
+            <li><a href="/generate_pkl"><i class="fas fa-head-side-brain"></i> Generate Modal</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="app">
+
+        <div class="column">
+            <h1>Twitter <span>Sentiment</span> Analysis</h1>
+
+            <form id="tweetForm">
+                <div class="input-field">
+                    <input type="text" id="tweet" name="tweet">
+                </div>
+
+                <div class="input-field" style="display: none;">
+                    <input type="text" name="selectedModalName">
+                </div>
+
+                <div class="buttons">
+                    <button type="button" id="predictButton">Predict</button>
+                    <button type="button" id="voiceButton"><i class="fas fa-microphone-alt"></i> Speak</button>
+                </div>
+            </form>
+
+            <div id="predictionResult"></div>
+            <div id="predictionTime"></div>
+
+            <div class="tweet-suggestion">
+                <h2>Try these tweets</h2>
+                <div class="tweets">
+
+                    <p class="active" onclick="document.getElementById('tweet').value = this.innerText">Grateful for the opportunity to serve our country during these challenging times. Let's continue working together towards a brighter future. #Service #Leadership</p>
+                    <p onclick="document.getElementById('tweet').value = this.innerText">Just wrapped up filming on set for my latest project. Can't wait for everyone to see the final product! #Acting #Film</p>
+                    <p onclick="document.getElementById('tweet').value = this.innerText">Had an insightful meeting with fellow lawmakers today discussing important policies. Excited to see positive changes ahead. #Politics #Progress</p>
+                    <p onclick="document.getElementById('tweet').value = this.innerText">Sending love and gratitude to all my fans for their unwavering support throughout my career. You all mean the world to me! #Grateful #FanLove</p>
+                    <p onclick="document.getElementById('tweet').value = this.innerText">Had an inspiring conversation with students at a local school about the importance of education. The future is bright with these young minds! #Education #Inspiration</p>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        <div class="column bg">
+            <div id="select-Modals">
+                <h2>Select Modal</h2>
+                <div class="modals">
+                    {% for file in files %}
+                    <div class="card" onclick="selectedModalName(this)">
+                        <p>{{ file }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="how-it-works" style="height: 0px">
+        <p>Designed and Developed with ❤ by Vinay Prajapat</p>
+    </div>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='Predict.js') }}"></script>
+
+</html>

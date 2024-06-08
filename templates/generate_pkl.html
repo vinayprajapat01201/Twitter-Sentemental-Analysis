@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generate PKL</title>
+    <!-- Import css from public in flask -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3938/3938028.png" type="image/gif" sizes="16x16">
+
+    <link href="https://pro.fontawesome.com/releases/v5.15.4/css/all.css" rel="stylesheet" />
+</head>
+
+<body class="generate">
+
+    <div class="inner">
+        <nav>
+            <div class="logo">
+                <img id="logo_img" src="https://cdn-icons-png.flaticon.com/512/3938/3938028.png" alt="">
+                <h1>Twitter SA</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="/predict_tweets"><i class="fas fa-sad-cry"></i> Predict</a></li>
+                <li><a href="/generate_pkl" class="active"><i class="fas fa-head-side-brain"></i> Generate Modal</a></li>
+            </ul>
+        </nav>
+
+        <div class="column">
+
+            <form id="uploadForm" enctype="multipart/form-data">
+                <h1>Upload Your Datasheet</h1>
+
+                <div class="input-group">
+                    <input type="file" name="file" id="fileInput" accept=".csv">
+                </div>
+
+
+                <div class="input-group">
+                    <p id="nltk"></p>
+                    <select name="cleaningMethod" id="cleaningMethodSelect">
+                        <option value="nltk" selected>
+                            NLTK
+                        </option>
+                        <option value="custom">
+                            Custom Cleaning
+                        </option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <p id="train_test_split"></p>
+                    <select name="splitMethod" id="splitMethodSelect">
+                        <option value="train-test-split" selected>
+                            Train-Test Split
+                        </option>
+                        <option value="k-fold">
+                            K-Fold Cross Validation
+                        </option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <p id="modelMethodSelectP"></p>
+                    <select name="modelMethod" id="modelMethodSelect">
+                        <option value="random-forest" selected>
+                            Random Forest
+                        </option>
+                        <option value="logistic-regression">
+                            Logistic Regression
+                        </option>
+                        <option value="naive-bayes">
+                            Naive Bayes
+                        </option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <p id="accuracyMethodSelectp"></p>
+                    <select name="accuracyMethod" id="accuracyMethodSelect">
+                        <option value="accuracy-score" selected>
+                            Accuracy Score
+                        </option>
+                        <option value="f1-score">
+                            F1 Score
+                        </option>
+                        <option value="precision-recall">
+                            Precision-Recall
+                        </option>
+                    </select>
+                </div>
+
+
+                <div class="input-group">
+
+                    <input type="text" name="modalName" id="modalNameInput" placeholder="Type Model Name...">
+                </div>
+
+                <button type="button" id="uploadBtn" onclick="uploadFile()"><i class="fas fa-starship-freighter"></i> Build
+    
+                </button>
+            </form>
+
+        </div>
+
+        <div class="column">
+            <h1>Status </h1>
+
+            <div id="processResponse">
+                <p>1. File Upload and Check</p>
+            </div>
+
+            <div id="progress">
+                <p>2. Data Cleaning...</p>
+                <p>3. Modal Buliding...</p>
+                <p>4. And Other Status will be shown here... </p>
+            </div>
+
+            <div id="timer">
+                <p id="processRunningTime"></p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="how-it-works" style="height: 0px">
+        <p>Designed and Developed with ❤ by Vinay Prajapat</p>
+    </div>
+
+
+
+    <script type="text/javascript" src="{{ url_for('static', filename='Generate.js') }}"></script>
+
+
+</body>
+
+</html>
